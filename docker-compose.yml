@@ -1,13 +1,29 @@
-version: '3'
-
+version: '3.8'
 services:
   app:
     container_name: app
     build: .
-    working_dir: /var/www/html
+    #working_dir: /var/www/html
+    working_dir: /app
+    depends_on:
+      - mysql
     volumes:
-      - ./:/var/www/html
+      #- './:/var/www/html'
+      - './app/:/var/www/html'
     ports:
-      - '8080:80'
+      - '80:80'
     expose:
-      - '8080'
+      - '80'
+  mysql:
+    platform: linux/x86_64
+    image: 'mysql:8'
+    env_file:
+      - ./env/mysql.env
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    env_file:
+      - ./env/phpmyadmin.env
+    ports:
+      - '81:80'
+
+  

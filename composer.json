@@ -1,5 +1,10 @@
 {
-    "name": "phalcon/app",
+    "name": "root/html",
+    "authors": [
+        {
+            "name": "João"
+        }
+    ],
     "require-dev": {
         "phalcon/devtools": "^4.2"
     }
